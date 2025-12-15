@@ -1,16 +1,46 @@
-# Long-Distance-Call-Cost-Calculator-
-A C++ console application that calculates long-distance call costs based on call duration and time-based rate categories. The program emphasizes accurate input validation, clear user interaction, and modular program design.
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
-## Features
-- Calculates call cost based on duration
-- Applies time-based rate rules
-- Validates user input
-- Clean and readable console output
+bool isValidTime(int time) {
+    int hour = time / 100;
+    int min  = time % 100;
 
-## Technologies Used
-- C++
-- Standard Input/Output
-- Conditional logic
+    return (time >= 0 && time <= 2359 &&
+            hour >= 0 && hour <= 23 &&
+            min >= 0 && min <= 59);
+}
 
+double getRate(int time) {
+    if (time >= 800 && time <= 1759)
+        return 0.40;     // Day
+    else if (time >= 1800 && time <= 2359)
+        return 0.25;     // Evening
+    else
+        return 0.15;     // Off-peak
+}
 
+int main() {
+    int startTime, minutes;
+
+    cout << "Enter call start time (HHMM): ";
+    cin >> startTime;
+
+    cout << "Enter call duration (minutes): ";
+    cin >> minutes;
+
+    if (!isValidTime(startTime) || minutes <= 0) {
+        cout << "Invalid input.\n";
+        return 0;
+    }
+
+    double rate = getRate(startTime);
+    double totalCost = rate * minutes;
+
+    cout << fixed << setprecision(2);
+    cout << "\nRate per minute: $" << rate << endl;
+    cout << "Total cost: $" << totalCost << endl;
+
+    return 0;
+}
 
