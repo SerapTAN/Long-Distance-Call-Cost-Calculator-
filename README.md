@@ -1,46 +1,34 @@
-#include <iostream>
-#include <iomanip>
-using namespace std;
+# Long-Distance Call Cost Calculator
 
-bool isValidTime(int time) {
-    int hour = time / 100;
-    int min  = time % 100;
+## Description
+This project is a simple C++ console application that calculates the cost of a long-distance phone call. The user enters the start time of the call in HHMM format and the duration in minutes. Based on the time of day, the program applies the appropriate rate and displays the total call cost. The project focuses on clean code, input validation, and function-based design.
 
-    return (time >= 0 && time <= 2359 &&
-            hour >= 0 && hour <= 23 &&
-            min >= 0 && min <= 59);
-}
+## Features
+- Time-based rate calculation (day, evening, off-peak)
+- Input validation for call time and duration
+- Modular C++ functions for readability
+- Clear and formatted console output
 
-double getRate(int time) {
-    if (time >= 800 && time <= 1759)
-        return 0.40;     // Day
-    else if (time >= 1800 && time <= 2359)
-        return 0.25;     // Evening
-    else
-        return 0.15;     // Off-peak
-}
+## Technologies Used
+- C++
+- Standard Input/Output
+- Conditional statements
+- Functions
 
-int main() {
-    int startTime, minutes;
+## How to Run
+1. Compile the program:g++ main.cpp -o call_calculator
+2. Run the program: ./call_calculator
 
-    cout << "Enter call start time (HHMM): ";
-    cin >> startTime;
+## Example
+**Input:**
+- Start time: 1330  
+- Duration: 10 minutes  
 
-    cout << "Enter call duration (minutes): ";
-    cin >> minutes;
+**Output:**
+- Rate per minute: $0.40  
+- Total cost: $4.00  
 
-    if (!isValidTime(startTime) || minutes <= 0) {
-        cout << "Invalid input.\n";
-        return 0;
-    }
-
-    double rate = getRate(startTime);
-    double totalCost = rate * minutes;
-
-    cout << fixed << setprecision(2);
-    cout << "\nRate per minute: $" << rate << endl;
-    cout << "Total cost: $" << totalCost << endl;
-
-    return 0;
-}
-
+## Learning Outcomes
+- Practiced input validation in C++
+- Improved use of functions and modular design
+- Applied real-world problem-solving using conditional logic  
