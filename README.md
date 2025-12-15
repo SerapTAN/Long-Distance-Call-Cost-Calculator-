@@ -12,12 +12,5 @@ A C++ console application that calculates long-distance call costs based on call
 - Standard Input/Output
 - Conditional logic
 
-## How to Run
-1. Compile the program using a C++ compiler
-2. Run the executable
-3. Enter call duration and time period when prompted
 
-## Learning Outcomes
-- Improved C++ fundamentals
-- Input validation
-- Modular logic design
+
